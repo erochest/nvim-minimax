@@ -35,6 +35,7 @@ local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 -- - 'plugin/40_plugins.lua' honorable mentions - other good color schemes
 now(function() vim.cmd('colorscheme miniwinter') end)
 
+-- TODO: try out these colorschemes. maybe load up my own
 -- You can try these other 'mini.hues'-based color schemes (uncomment with `gcc`):
 -- now(function() vim.cmd('colorscheme minispring') end)
 -- now(function() vim.cmd('colorscheme minisummer') end)
@@ -329,6 +330,7 @@ later(function() require('mini.align').setup() end)
 -- It is not enabled by default because its effects are a matter of taste.
 -- Also scroll and resize have some unwanted side effects (see `:h mini.animate`).
 -- Uncomment next line (use `gcc`) to enable.
+-- TODO: maybe?
 -- later(function() require('mini.animate').setup() end)
 
 -- Go forward/backward with square brackets. Implements consistent sets of mappings
@@ -444,7 +446,7 @@ later(function() require('mini.comment').setup() end)
 --
 -- It is not enabled by default because its effects are a matter of taste.
 -- Uncomment next line (use `gcc`) to enable.
--- later(function() require('mini.cursorword').setup() end)
+later(function() require('mini.cursorword').setup() end)
 
 -- Work with diff hunks that represent the difference between the buffer text and
 -- some reference text set by a source. Default source uses text from Git index.
@@ -460,6 +462,8 @@ later(function() require('mini.comment').setup() end)
 -- - `:h MiniDiff-overview` - overview of how module works
 -- - `:h MiniDiff-diff-summary` - available summary information
 -- - `:h MiniDiff.gen_source` - available built-in sources
+-- TODO: how to use with jj?
+-- TODO: how to use with AI?
 later(function() require('mini.diff').setup() end)
 
 -- Git integration for more straightforward Git actions based on Neovim's state.

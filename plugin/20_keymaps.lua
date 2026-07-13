@@ -64,6 +64,7 @@ Config.leader_group_clues = {
   { mode = 'x', keys = '<Leader>g', desc = '+Git' },
   { mode = 'x', keys = '<Leader>l', desc = '+Language' },
 }
+-- TODO: jj commands (with or instead of git?)
 
 -- Helpers for a more concise `<Leader>` mappings.
 -- Most of the mappings use `<Cmd>...<CR>` string as a right hand side (RHS) in
@@ -110,6 +111,7 @@ end
 
 nmap_leader('ed', '<Cmd>lua MiniFiles.open()<CR>',          'Directory')
 nmap_leader('ef', explore_at_file,                          'File directory')
+-- TODO: may want to prune these out after I get things set up.
 nmap_leader('ei', '<Cmd>edit $MYVIMRC<CR>',                 'init.lua')
 nmap_leader('ek', edit_plugin_file('20_keymaps.lua'),       'Keymaps config')
 nmap_leader('em', edit_plugin_file('30_mini.lua'),          'MINI config')
@@ -247,3 +249,5 @@ nmap_leader('vV', '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core"
 nmap_leader('vl', '<Cmd>lua MiniVisits.add_label()<CR>',          'Add label')
 nmap_leader('vL', '<Cmd>lua MiniVisits.remove_label()<CR>',       'Remove label')
 -- stylua: ignore end
+
+-- TODO: <space>`

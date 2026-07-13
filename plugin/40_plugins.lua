@@ -38,6 +38,7 @@ local now_if_args, later = Config.now_if_args, Config.later
 --   with `:TSInstall <language>`. Be sure to have necessary system dependencies
 --   (see MiniMax README section for software requirements).
 now_if_args(function()
+  -- TODO: remove dependency on nvim-treesitter and nvim-treesitter-textobjects
   -- Define hook to update tree-sitter parsers after plugin is updated
   local ts_update = function() vim.cmd('TSUpdate') end
   Config.on_packchanged('nvim-treesitter', { 'update' }, ts_update, ':TSUpdate')
@@ -160,6 +161,7 @@ later(function() add({ 'https://github.com/rafamadriz/friendly-snippets' }) end)
 --   require('mason').setup()
 -- end)
 
+-- TODO: try out these colorschemes. maybe load up my own
 -- Beautiful, usable, well maintained color schemes outside of 'mini.nvim' and
 -- have full support of its highlight groups. Use if you don't like 'miniwinter'
 -- enabled in 'plugin/30_mini.lua' or other suggested 'mini.hues' based ones.
@@ -174,3 +176,6 @@ later(function() add({ 'https://github.com/rafamadriz/friendly-snippets' }) end)
 --   -- Enable only one
 --   vim.cmd('color everforest')
 -- end)
+
+-- TODO: harpoon (alternative)
+-- TODO: others?

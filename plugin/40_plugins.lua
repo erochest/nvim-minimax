@@ -11,6 +11,10 @@
 -- Make concise helpers for installing/adding plugins in two stages
 local add = vim.pack.add
 local now_if_args, later = Config.now_if_args, Config.later
+-- TODO: move this to a utilities module?
+local nmap_buffer_leader = function(suffix, rhs, desc)
+  vim.keymap.set('n', '<Leader>' .. suffix, rhs, { buffer = true, desc = desc })
+end
 
 -- Tree-sitter ================================================================
 
@@ -180,3 +184,34 @@ later(function() add({ 'https://github.com/rafamadriz/friendly-snippets' }) end)
 
 -- TODO: harpoon (alternative)
 -- TODO: others?
+
+now_if_args(function()
+  add({
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/mfussenegger/nvim-dap',
+    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/ibhagwan/fzf-lua',
+    'https://github.com/GustavEikaas/easy-dotnet.nvim'
+  })
+
+  require('fzf-lua').setup()
+  require('easy-dotnet').setup()
+
+  -- Create an autocommand group to prevent duplicate entries on reload
+  local augroup = vim.api.nvim_create_augroup("DotNetFiletypeKeymaps", { clear = true })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    group = augroup,
+    pattern = { "cs", "solution" },
+    callback = function()
+      nmap_buffer_leader('nb', '<cmd>Dotnet build<cr>', 'Build')
+      nmap_buffer_leader('nc', '<cmd>Dotnet clean<cr>', 'Clean')
+      nmap_buffer_leader('nd', '<cmd>Dotnet diagnostic<cr>', 'Diagnostics')
+      nmap_buffer_leader('nR', '<cmd>Dotnet lsp restart<cr>', 'Restart LSP Server')
+      nmap_buffer_leader('nr', '<cmd>Dotnet run<cr>', 'Run')
+      nmap_buffer_leader('ns', '<cmd>Dotnet restore<cr>', 'Restore')
+      nmap_buffer_leader('nt', '<cmd>Dotnet test<cr>', 'Test')
+      nmap_buffer_leader('nU', '<cmd>Dotnet _server update<cr>', 'Update server')
+    end,
+  })
+end)

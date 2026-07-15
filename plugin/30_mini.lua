@@ -20,6 +20,8 @@
 -- possible directions for more info.
 -- For more info about a module see its help page (`:h mini.xxx` for 'mini.xxx').
 
+-- TODO: can I have filenames in the completion dropdown?
+
 -- To minimize the time until first screen draw, modules are enabled in two steps:
 -- - Step one enables everything that is needed for first draw with `now()`.
 --   Sometimes needed only if Neovim is started as `nvim -- path/to/file`.

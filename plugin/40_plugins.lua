@@ -185,6 +185,7 @@ later(function() add({ 'https://github.com/rafamadriz/friendly-snippets' }) end)
 -- TODO: harpoon (alternative)
 -- TODO: others?
 
+-- Easy DotNet
 now_if_args(function()
   add({
     'https://github.com/nvim-lua/plenary.nvim',
@@ -214,4 +215,17 @@ now_if_args(function()
       nmap_buffer_leader('nU', '<cmd>Dotnet _server update<cr>', 'Update server')
     end,
   })
+end)
+
+-- Orgmode
+now_if_args(function()
+  add({
+    { src = 'https://github.com/nvim-orgmode/orgmode'}
+  })
+  require('orgmode').setup({
+    org_agenda_files = '~/Dropbox/org/**/*',
+    org_default_notes_file = '~/Dropbox/org/inbox.org',
+  })
+  -- Experimental LSP support
+  vim.lsp.enable('org')
 end)
